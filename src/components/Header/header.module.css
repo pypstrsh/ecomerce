@@ -27,8 +27,9 @@
   gap: 30px;
 }
 
-.adminLink {
+.name{
   color: white;
+  font-size: large;
 }
 
 .cartIcon {
