@@ -1,0 +1,47 @@
+.header {
+  padding-left: 200px;
+  padding-right: 200px;
+  height: 100px;
+  background-color: black;
+}
+.loginBtn{
+  margin-right: 20px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.searchInput {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.adminLink {
+  color: white;
+}
+
+.cartIcon {
+  font-size: 30px;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    height: 320px;
+  }
+
+  .headerContainer {
+    flex-direction: column;
+  }
+}

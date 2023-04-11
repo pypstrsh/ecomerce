@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { MainPage, CategoryPage, ProductPage, CartPage, GoodsPage, LoginPage, RegistrationPage } from "./Pages";
+import { getIsAuthValue } from './store';
+import { Header, Footer } from "src/components";
+import { Layout } from 'antd';
+import { useSelector } from 'react-redux';
 
-function App() {
+export const App = () => {
+  const isAuth = useSelector(getIsAuthValue);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="wrapper">
+      <Header />
+      <Layout className="container">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/category/:ids" element={<CategoryPage />} />
+          <Route path="/product/:ids" element={<ProductPage />}></Route>
+          <Route path="/cart" element={isAuth ? <CartPage /> : <Navigate to="/login" />} />
+          <Route path="/goods" element={<GoodsPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/registration" element={<RegistrationPage />}></Route>
+          <Route path="*" element={<Navigate to="/" />}></Route>
+        </Routes>
+      </Layout>
+      <Footer />
+    </Layout>
   );
 }
-
-export default App;
