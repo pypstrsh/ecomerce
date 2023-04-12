@@ -81,7 +81,7 @@ export const Header: FC = () => {
                             <Button><Link to="/registration">Зарегистрироваться </Link></Button>
                         </Col> :
                         <Space size={"large"}>
-                            <Typography.Text className={css.adminLink}>{localStorage.getItem('login')}</Typography.Text>
+                            <Typography.Text className={css.name}>Hi, {localStorage.getItem('login')}</Typography.Text>
                             <Button onClick={showModal}>Выйти</Button>
 
                         </Space>}
