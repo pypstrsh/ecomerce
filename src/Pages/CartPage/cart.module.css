@@ -1,0 +1,26 @@
+.cart {
+  display: inline-flex;
+  gap: 50px;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buycard {
+  flex-basis: 15%;
+}
+
+.cartList {
+  flex-basis: 85%;
+}
+
+.buyButton {
+  color: white;
+  width: 100%;
+  background-color: black;
+  font-weight: 500;
+}
+
+.info {
+  font-weight: 500;
+}

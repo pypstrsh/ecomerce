@@ -1,0 +1,18 @@
+.loginForm {
+  margin-top: 50px;
+  align-self: center;
+  width: 30%;
+  text-align: center;
+}
+.loginButton{
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 510px) {
+  .loginButton {
+    width: 100%;
+  }
+  .signInButton {
+    width: 100%;
+  }
+}
