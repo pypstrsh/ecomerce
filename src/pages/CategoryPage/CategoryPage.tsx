@@ -13,7 +13,7 @@ export const CategoryPage: FC = () => {
     const dispatch = useAppDispatch();
     const goods = useSelector(getGoods);
     const { ids } = useParams();
-    const [params] = useState<Partial<GoodsSearch>>({ categoryTypeIds: ids });
+    const params: Partial<GoodsSearch>={ categoryTypeIds: ids };
     const loadStatus = useSelector(getGoodsLoadStatus);
     const navigate = useNavigate();
     useEffect(() => {

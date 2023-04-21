@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import { Content } from "antd/es/layout/layout";
 import { Form, Input, Button, message } from "antd";
 import { Link } from "react-router-dom";
-import { userActions, getIsAuthValue, getUserLoadStatus } from "src/store";
+import { userActions, getIsAuth, getUserLoadStatus } from "src/store";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
 import { useNavigate } from "react-router-dom";
 import css from "./login.module.css";
 
 export const LoginPage: FC = () => {
     const dispatch = useAppDispatch();
-    const isAuth = useSelector(getIsAuthValue);
+    const isAuth = useSelector(getIsAuth);
     const navigate = useNavigate();
     const loadStatus = useSelector(getUserLoadStatus);
     const [login, setLogin] = useState<string>('');

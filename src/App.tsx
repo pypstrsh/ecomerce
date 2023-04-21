@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { MainPage, CategoryPage, ProductPage, CartPage, GoodsPage, LoginPage, RegistrationPage } from "./Pages";
-import { getIsAuthValue } from './store';
+import { MainPage, CategoryPage, ProductPage, CartPage, GoodsPage, LoginPage, RegistrationPage } from "./pages";
+import { getIsAuth } from './store';
 import { Header, Footer } from "src/components";
 import { Layout } from 'antd';
 import { useSelector } from 'react-redux';
 
 export const App = () => {
-  const isAuth = useSelector(getIsAuthValue);
+  const isAuth = useSelector(getIsAuth);
   return (
     <Layout className="wrapper">
       <Header />

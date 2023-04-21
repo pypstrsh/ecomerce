@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { Form, Input, Radio, Checkbox, Switch, DatePicker, Button, Typography, Layout, message } from "antd";
-import { getCategories, categoryActions, userActions, getIsAuthValue } from "src/store";
+import { getCategories, categoryActions, userActions, getIsAuth } from "src/store";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
 import { Navigate, Link } from "react-router-dom";
@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
 export const RegistrationPage: FC = () => {
     const categories = useSelector(getCategories);
     const dispatch = useAppDispatch();
-    const isAuth = useSelector(getIsAuthValue);
+    const isAuth = useSelector(getIsAuth);
 
     useEffect(() => {
         dispatch(categoryActions.serverRequest());

@@ -3,7 +3,7 @@ import { Content } from "antd/es/layout/layout";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Spin, Skeleton, Button, message } from "antd";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { getGoods, getGoodsLoadStatus, goodActions, cartActions, getCartGoods, getIsAuthValue } from "src/store";
+import { getGoods, getGoodsLoadStatus, goodActions, cartActions, getCartGoods, getIsAuth } from "src/store";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
 import { Good } from "src/types/general";
@@ -12,7 +12,7 @@ import css from "./productPage.module.css";
 
 export const ProductPage: FC = () => {
     const loadStatus = useSelector(getGoodsLoadStatus);
-    const isAuth = useSelector(getIsAuthValue)
+    const isAuth = useSelector(getIsAuth)
     const navigate = useNavigate();
     const { ids } = useParams();
     const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ export const ProductPage: FC = () => {
     const [currentGoods, setCurrentGoods] = useState<Good | null>();
     useEffect(() => {
         if (!currentGoods) {
-            getGood();
+            dispatch(goodActions.serverRequest({ ids }))
         }
     }, [ids]);
     useEffect(() => {
@@ -32,7 +32,7 @@ export const ProductPage: FC = () => {
     }, [goods]);
 
     const getCart = () => dispatch(cartActions.serverRequest());
-    const getGood = () => dispatch(goodActions.serverRequest({ ids }));
+
     const countGoodsInCart = cartGoods.find(good => good.id === ids)?.count ?? 0;
     const addToCarts = () => {
         count > 0 && api.addToCart(
@@ -73,8 +73,8 @@ export const ProductPage: FC = () => {
                             }
                         }} icon={<ShoppingCartOutlined />} size="large">Добавить в корзину</Button>
                         <p>Количество: {count}</p>
-                        <Button className={css.increaseBtn} onClick={() => setCount(count > 1 ? count - 1 : count)}>-</Button>
-                        <Button onClick={() => setCount(count + 1)}>+</Button>
+                        <Button className={css.increaseBtn} onClick={() => setCount((prevCount) => prevCount> 1 ? prevCount - 1 : prevCount)}>-</Button>
+                        <Button onClick={() => setCount((prevCount) =>  prevCount + 1 )}>+</Button>
                     </div>}
             </div>
         </Content>

@@ -2,7 +2,7 @@ import { type FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge, Button, Row, Col, Space, message, Typography, Input, Dropdown, Modal, Layout } from "antd";
-import { getCartGoods, getGoods, getIsAuthValue, getUserLogin } from "src/store";
+import { getCartGoods, getGoods, getIsAuth, getUserLogin } from "src/store";
 import { useSelector } from "react-redux";
 import { userActions, cartActions, goodActions } from "src/store";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
@@ -12,7 +12,7 @@ import css from "./header.module.css";
 
 export const Header: FC = () => {
     const cartGoods = useSelector(getCartGoods);
-    const isAuth = useSelector(getIsAuthValue);
+    const isAuth = useSelector(getIsAuth);
     const dispatch = useAppDispatch();
     const login = useSelector(getUserLogin);
     const [searchedGoods, setSearchedGoods] = useState<Good[]>([]);
@@ -44,7 +44,7 @@ export const Header: FC = () => {
         setIsModalOpen(true);
     };
 
-    const handleOk = () => {
+    const handleLogout = () => {
         setIsModalOpen(false);
         dispatch(userActions.setAuth(false));
         dispatch(userActions.resetLogin());
@@ -58,7 +58,7 @@ export const Header: FC = () => {
 
     return (
         <Layout.Header className={css.header}>
-            <Modal title="Подтвердите действие" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Modal title="Подтвердите действие" open={isModalOpen} onOk={handleLogout} onCancel={handleCancel}>
                 <p>Уверены, что хотите выйти?</p>
             </Modal>
             <Row className={css.headerContainer}>

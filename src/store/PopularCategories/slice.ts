@@ -13,7 +13,7 @@ const initialState: State = {
   popularItems: [],
 };
 
-const SLICE_NAME = "popular_categories";
+const SLICE_NAME = "popularСategories";
 
 const serverRequest = createAsyncThunk(SLICE_NAME, api.getPopularCategories);
 
