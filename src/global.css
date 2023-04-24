@@ -19,8 +19,13 @@ body {
   margin: 0 auto;
   background-color: #fff;
 }
-
-
+.content {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  justify-content: flex-start;
+  flex-direction: column;
+}
 
 .categoryTitle {
   background-color: darkseagreen;
