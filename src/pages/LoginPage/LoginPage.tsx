@@ -20,10 +20,7 @@ export const LoginPage: FC = () => {
         if (loadStatus === "ERROR") {
             message.open({ type: "warning", content: "Неверный пользователь" });
         }
-        if (isAuth) {
-            message.open({ type: "success", content: "Успешный вход" });
-            navigate("/");
-        }
+
     }, [loadStatus])
     return (
         <Content className="content">

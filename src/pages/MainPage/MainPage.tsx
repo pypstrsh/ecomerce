@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { GoodCategory, Menu } from "src/components";
+import { GoodCategory, Menu, Spinner } from "src/components";
 import { getPopularCategories, getPopularLoadStatus, popularActions, categoryActions } from "src/store";
-import { Layout, Image, Skeleton, Spin, Drawer, FloatButton, Button } from "antd";
+import { Layout, Image, Skeleton, Drawer, FloatButton } from "antd";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
 import { useSelector } from "react-redux";
 import css from "./mainPage.module.css";
@@ -40,7 +40,7 @@ export const MainPage: FC = () => {
                         <Image className={css.bannerImg} preview={false} src="https://source.unsplash.com/featured/1320x488?store" alt="banner-image" />
                     </Skeleton.Node>
                 </div>
-                {loadStatus === "LOADING" ? <div className="loading"><Spin tip={loadStatus} /></div> :
+                {loadStatus === "LOADING" ? <Spinner tip={loadStatus} /> :
                     <ul className={css.popularCategories}>
                         {popularCategories.map((category) => <li key={category.category.id}><GoodCategory label={category.category.label} goods={category.items} /></li>)}
                     </ul>

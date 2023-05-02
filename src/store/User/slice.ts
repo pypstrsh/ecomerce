@@ -48,12 +48,10 @@ const { reducer, actions: userActions } = createSlice({
       state.loadStatus = LOAD_STATUSES.LOADED;
       state.login = action.payload.login;
       state.isAuth = true;
-      localStorage.setItem("login", state.login);
     });
 
     builder.addCase(registration.fulfilled, (state, action) => {
       state.isAuth = true;
-      localStorage.setItem("login", action.payload.user.login);
     });
   },
 });

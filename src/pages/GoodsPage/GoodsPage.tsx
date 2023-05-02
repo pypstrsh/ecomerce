@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
 import { Good, GoodsSearch } from "src/types/general";
 import { debounce } from "lodash";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import css from "./goodsPage.module.css";
 const { Search } = Input;
 const { Content } = Layout;

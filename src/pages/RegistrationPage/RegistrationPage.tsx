@@ -1,9 +1,9 @@
 import { FC, useEffect } from "react";
-import { Form, Input, Radio, Checkbox, Switch, DatePicker, Button, Typography, Layout, message } from "antd";
+import { Form, Input, Checkbox, Switch, Button, Typography, Layout, message } from "antd";
 import { getCategories, categoryActions, userActions, getIsAuth } from "src/store";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "src/hooks/useAppDispatch";
-import { Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import css from "./registration.module.css";
 import * as yup from "yup";
@@ -80,7 +80,7 @@ export const RegistrationPage: FC = () => {
                             <Switch defaultChecked={values.isSubscribe} onChange={(value) => setFieldValue("isSubscribe", value)} />
                         </Form.Item>
                         <Form.Item className={css.fromContol}>
-                            {isAuth && <Navigate to="/" />}
+
                             <Button className={css.registrationBtn} type="primary" htmlType="submit" onClick={() => {
                                 if (!isValid) {
                                     message.open({

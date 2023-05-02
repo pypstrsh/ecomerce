@@ -87,12 +87,14 @@ class Api {
   ): Promise<{ login: string; token: string }> => {
     const res = await this.post("/api/login", cred);
     localStorage.setItem("token", res.token);
+    localStorage.setItem("login", res.login);
     return res;
   };
 
   registration = async (user: User): Promise<{ user: User }> => {
     const res = await this.post("/api/registration", user);
     this.login({ login: user.login, password: user.password });
+    localStorage.setItem("login", res.user.login);
     return res;
   };
 }
