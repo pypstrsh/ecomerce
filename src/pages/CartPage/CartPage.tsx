@@ -9,8 +9,8 @@ import css from "./cart.module.css";
 export const CartPage: FC = () => {
     const dispatch = useAppDispatch();
     const cartGoods = useSelector(getCartGoods);
-    const totalPrice = useSelector(getCartGoodsCount);
-    const totalCount = useSelector(getCartGoodsPrice);
+    const totalPrice = useSelector(getCartGoodsPrice);
+    const totalCount = useSelector(getCartGoodsCount);
     useEffect(() => {
         dispatch(cartActions.serverRequest());
     }, []);
